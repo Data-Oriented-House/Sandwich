@@ -1,33 +1,27 @@
 title = "Sandwich"  # From Git
-gitRepoUrl = "https://github.com/yourusername/sandwich" # From Git
+gitRepoUrl = "https://github.com/solarscuffle-bot/sandwich" # From Git
 
 gitSourceBranch = "main"
 changelog = true
-classOrder = [
-	"Sandwich",
-	"Stream",
-	"Job",
-	"Task",
-]
 
 [home]
 enabled = true
 includeReadme = false
 
 [[home.features]]
-title = "Event Management"
-description = "Sandwich allows you to easily create, modify, and manage schedulers in your projects."
-image = "/EventLoop.png"
+title = "Extensible and Composable"
+description = "Because all logic is separated from data, and data is split up into Tasks, Jobs, and Streams, your jobs and streams are extensible and composable right from the start!"
+# image = "/PuzzlePieces.png"
 
 [[home.features]]
-title = "Extensible and Composable"
-description = "Sandwich provides a variety of functions for inserting, removing, and replacing tasks within scheduled streams, making it easy to extend and compose event-driven logic in your applications."
-image = "/PuzzlePieces.png"
+title = "Task Scheduling"
+description = "Sandwich allows you to easily define, order, and execute tasks in your experiences."
+image = "/SandwichLogo.png"
 
 [[home.features]]
 title = "Lightweight and Efficient"
-description = "Sandwich is a lightweight scheduler designed to minimize overhead and maximize efficiency, making it an ideal solution for managing jobs in your Roblox projects."
-image = "/Lightweight.png"
+description = "Sandwich is a lightweight scheduler designed to minimize overhead and maximize efficiency, making it an ideal solution for managing jobs in your Roblox projects. It leverages the power of arrays and optimized data definitions to achieve this."
+# image = "/Lightweight.png"
 
 [docusaurus]
 onBrokenLinks = "throw"
