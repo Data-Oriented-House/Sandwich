@@ -1,5 +1,11 @@
 --!strict
 
+--[[
+	Notes for features that may be useful in the future:
+		Jobs have multiple tasks
+		Jobs have execution counts, and can be removed after a certain number of executions
+]]
+
 --[=[
 	@class Sandwich
 
@@ -48,7 +54,7 @@ local Sandwich = {}
 	@param Tasks { Task }?
 	@return Stream
 
-	Creates a new stream with the given tasks in order.
+	Creates a new stream with jobs for each task in order.
 ]=]
 function Sandwich.Create(Tasks : { Task }?) : Stream
 	local Tasks = (Tasks or {}) :: { Task }
