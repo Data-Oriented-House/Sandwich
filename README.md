@@ -1,1 +1,1 @@
-A cool scheduler
+[The Website](https://solarscuffle-bot.github.io/Sandwich/api/Sandwich)
