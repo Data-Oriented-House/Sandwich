@@ -9,7 +9,7 @@
 --[=[
 	@class Sandwich
 
-	The simple scheduler for Roblox.
+	The simple Calendarr for Roblox.
 ]=]
 
 --[=[
@@ -24,25 +24,25 @@ export type Task = (...any) -> true?
 	@within Sandwich
 	@interface Job
 	.Task Task
-	.Stream Stream?
+	.Schedule Schedule?
 
-	Executes its tasks. If its stream is nil, it was removed from a stream and cannot be used again.
+	Executes its tasks. If its Schedule is nil, it was removed from its Schedule and cannot be used again.
 ]=]
 export type Job = {
 	Task : Task,
-	Stream : Stream?,
+	Schedule : Schedule?,
 }
 
 --[=[
 	@within Sandwich
-	@interface Stream
+	@interface Schedule
 	.Jobs { Job }
 	.Before () -> true?
 	.After () -> ()
 
-	An ordered list of jobs. Before and after are called before and after the stream is executed. If Before returns true, the stream will not be executed.
+	An ordered list of jobs. Before and after are called before and after the Schedule is executed. If Before returns true, the Schedule will not be executed.
 ]=]
-export type Stream = {
+export type Schedule = {
 	Jobs : { Job },
 	Before : () -> true?,
 	After : () -> (),
@@ -50,15 +50,15 @@ export type Stream = {
 
 --[=[
 	@within Sandwich
-	@interface Schedule
-	.Streams { Stream }
+	@interface Calendar
+	.Schedules { Schedule }
 	.Before () -> true?
 	.After () -> ()
 
-	An ordered list of streams. Before and after are called before and after the schedule is executed. If Before returns true, the schedule will not be executed.
+	An ordered list of Schedules. Before and after are called before and after the Calendar is executed. If Before returns true, the Calendar will not be executed.
 ]=]
-export type Schedule = {
-	Streams : { Stream },
+export type Calendar = {
+	Schedules : { Schedule },
 	Before : () -> true?,
 	After : () -> (),
 }
@@ -69,7 +69,7 @@ type Callbacks = {
 }
 
 
-local JobNotInStream = "Job is not in a stream"
+local JobNotInSchedule = "Job is not in a Schedule"
 local function Nop() end
 
 local Sandwich = {}
@@ -78,46 +78,47 @@ Sandwich.Create = {}
 
 --[=[
 	@within Sandwich
-	@function Create.Stream
+	@function Create.Schedule
 	@param Tasks { Task }
 	@param Callbacks { Before : (() -> true?)?, After : (() -> ())? }?
-	@return Stream
+	@return Schedule
 
-	Creates a new stream with jobs for each task in order.
+	Creates a new Schedule with jobs for each task in order.
 ]=]
-function Sandwich.Create.Stream(Tasks : { Task }, Callbacks : Callbacks?) : Stream
+function Sandwich.Create.Schedule(Tasks : { Task }?, Callbacks : Callbacks?) : Schedule
+	local Tasks = (Tasks or {}) :: { Task }
 	local Callbacks = (Callbacks or {}) :: Callbacks
 
-	local Stream: Stream = {
+	local Schedule: Schedule = {
 		Jobs = table.create(#Tasks),
 		Before = Callbacks.Before or Nop,
 		After = Callbacks.After or Nop,
 	}
 
 	for i, Task in Tasks do
-		Stream.Jobs[i] = {
+		Schedule.Jobs[i] = {
 			Task = Task,
-			Stream = Stream,
+			Schedule = Schedule,
 		} :: Job
 	end
 
-	return Stream
+	return Schedule
 end
 
 --[=[
 	@within Sandwich
-	@function Create.Schedule
-	@param Streams { Stream }
+	@function Create.Calendar
+	@param Schedules { Schedule }
 	@param Callbacks { Before : (() -> true?)?, After : (() -> ())? }?
-	@return Schedule
+	@return Calendar
 
-	Creates a new schedule with streams in order.
+	Creates a new Calendar with Schedules in order.
 ]=]
-function Sandwich.Create.Schedule(Streams : { Stream }, Callbacks : Callbacks?) : Schedule
+function Sandwich.Create.Calendar(Schedules : { Schedule }, Callbacks : Callbacks?) : Calendar
 	local Callbacks = (Callbacks or {}) :: Callbacks
 
 	return {
-		Streams = table.clone(Streams),
+		Schedules = table.clone(Schedules),
 		Before = Callbacks.Before or Nop,
 		After = Callbacks.After or Nop,
 	}
@@ -126,16 +127,16 @@ end
 --[=[
 	@within Sandwich
 	@function Clear
-	@param Stream Stream
+	@param Schedule Schedule
 
-	Removes all jobs from a stream.
+	Removes all jobs from a Schedule.
 ]=]
-function Sandwich.Clear(Stream : Stream)
-	for _, Job in Stream.Jobs do
-		Job.Stream = nil
+function Sandwich.Clear(Schedule : Schedule)
+	for _, Job in Schedule.Jobs do
+		Job.Schedule = nil
 	end
 
-	table.clear(Stream.Jobs)
+	table.clear(Schedule.Jobs)
 end
 
 --[=[
@@ -147,25 +148,27 @@ end
 	Replaces the task of a job.
 ]=]
 function Sandwich.Replace(Job : Job, Task : Task)
-	assert(Job.Stream, JobNotInStream)
-	local Stream = Job.Stream
+	assert(Job.Schedule, JobNotInSchedule)
+	local Schedule = Job.Schedule
 
-	Stream.Jobs[table.find(Stream.Jobs, Job) :: number].Task = Task
+	Schedule.Jobs[table.find(Schedule.Jobs, Job) :: number].Task = Task
 end
 
 --[=[
 	@within Sandwich
 	@function Find
-	@param Stream Stream
+	@param Schedule Schedule
 	@param Task Task
 	@return Job?
 
-	Finds the first job with the given task in a stream.
+	Finds the first job with the given task in a Schedule.
 ]=]
-function Sandwich.Find(Stream : Stream, Task : Task) : Job?
-	for _, Job in Stream.Jobs do
+function Sandwich.Find(Schedule : Schedule, Task : Task) : Job?
+	for _, Job in Schedule.Jobs do
 		if Job.Task == Task then return Job end
 	end
+
+	return nil
 end
 
 Sandwich.Insert = {}
@@ -173,19 +176,19 @@ Sandwich.Insert = {}
 --[=[
 	@within Sandwich
 	@function Insert.Start
-	@param Stream Stream
+	@param Schedule Schedule
 	@param Task Task
 	@return Job
 
-	Inserts a new job at the start of a stream.
+	Inserts a new job at the start of a Schedule.
 ]=]
-function Sandwich.Insert.Start(Stream : Stream, Task : Task) : Job
+function Sandwich.Insert.Start(Schedule : Schedule, Task : Task) : Job
 	local Job : Job = {
 		Task = Task,
-		Stream = Stream,
+		Schedule = Schedule,
 	}
 
-	table.insert(Stream.Jobs, 1, Job)
+	table.insert(Schedule.Jobs, 1, Job)
 
 	return Job
 end
@@ -193,19 +196,19 @@ end
 --[=[
 	@within Sandwich
 	@function Insert.End
-	@param Stream Stream
+	@param Schedule Schedule
 	@param Task Task
 	@return Job
 
-	Inserts a new job at the end of a stream.
+	Inserts a new job at the end of a Schedule.
 ]=]
-function Sandwich.Insert.End(Stream : Stream, Task : Task) : Job
+function Sandwich.Insert.End(Schedule : Schedule, Task : Task) : Job
 	local Job : Job = {
 		Task = Task,
-		Stream = Stream,
+		Schedule = Schedule,
 	}
 
-	table.insert(Stream.Jobs, Job)
+	table.insert(Schedule.Jobs, Job)
 
 	return Job
 end
@@ -220,15 +223,15 @@ end
 	Inserts a new job before a pre-existing job.
 ]=]
 function Sandwich.Insert.Before(Job : Job, Task : Task) : Job
-	assert(Job.Stream, JobNotInStream)
-	local Stream = Job.Stream
+	assert(Job.Schedule, JobNotInSchedule)
+	local Schedule = Job.Schedule
 
 	local NewJob : Job = {
 		Task = Task,
-		Stream = Stream,
+		Schedule = Schedule,
 	}
 
-	table.insert(Stream.Jobs, table.find(Stream.Jobs, Job) :: number, NewJob)
+	table.insert(Schedule.Jobs, table.find(Schedule.Jobs, Job) :: number, NewJob)
 
 	return NewJob
 end
@@ -243,15 +246,15 @@ end
 	Inserts a new job after a pre-existing job.
 ]=]
 function Sandwich.Insert.After(Job : Job, Task : Task) : Job
-	assert(Job.Stream, JobNotInStream)
-	local Stream = Job.Stream
+	assert(Job.Schedule, JobNotInSchedule)
+	local Schedule = Job.Schedule
 
 	local NewJob : Job = {
 		Task = Task,
-		Stream = Stream,
+		Schedule = Schedule,
 	}
 
-	table.insert(Stream.Jobs, table.find(Stream.Jobs, Job) :: number + 1, NewJob)
+	table.insert(Schedule.Jobs, table.find(Schedule.Jobs, Job) :: number + 1, NewJob)
 
 	return NewJob
 end
@@ -261,52 +264,52 @@ end
 	@function Remove
 	@param Job Job
 
-	Removes a job from its stream and sets its stream to nil.
+	Removes a job from its Schedule and sets its Schedule to nil.
 ]=]
 function Sandwich.Remove(Job : Job)
-	assert(Job.Stream, JobNotInStream)
-	local Stream = Job.Stream
+	assert(Job.Schedule, JobNotInSchedule)
+	local Schedule = Job.Schedule
 
-	table.remove(Stream.Jobs, table.find(Stream.Jobs, Job))
-	Job.Stream = nil
+	table.remove(Schedule.Jobs, table.find(Schedule.Jobs, Job))
+	Job.Schedule = nil
 end
 
 Sandwich.Fire = {}
 
 --[=[
 	@within Sandwich
-	@function Fire.Stream
-	@param Stream Stream
+	@function Fire.Schedule
+	@param Schedule Schedule
 	@param ... any
 
-	Executes all jobs in a stream in order with the given arguments. If a job returns a non-nil value, the stream will stop executing.
+	Executes all jobs in a Schedule in order with the given arguments. If a job returns a non-nil value, the Schedule will stop executing.
 ]=]
-function Sandwich.Fire.Stream(Stream : Stream, ...: any)
-	if Stream.Before() then return end
+function Sandwich.Fire.Schedule(Schedule : Schedule, ...: any)
+	if Schedule.Before() then return end
 
-	for _, Job in Stream.Jobs do
+	for _, Job in Schedule.Jobs do
 		if Job.Task(...) == true then break end
 	end
 
-	Stream.After()
+	Schedule.After()
 end
 
 --[=[
 	@within Sandwich
-	@function Fire.Streams
-	@param Streams { Stream }
+	@function Fire.Schedules
+	@param Schedules { Schedule }
 	@param ... any
 
-	Executes all jobs in all streams in order with the given arguments. If a job returns a non-nil value, the stream will stop executing and it will move to the next stream.
+	Executes all jobs in all Schedules in order with the given arguments. If a job returns a non-nil value, the Schedule will stop executing and it will move to the next Schedule.
 ]=]
-function Sandwich.Fire.Schedule(Schedule : Schedule, ...: any)
-	if Schedule.On.Before() then return end
+function Sandwich.Fire.Calendar(Calendar : Calendar, ...: any)
+	if Calendar.Before() then return end
 
-	for _, Stream in Schedule.Streams do
-		Sandwich.Fire.Stream(Stream, ...)
+	for _, Schedule in Calendar.Schedules do
+		Sandwich.Fire.Schedule(Schedule, ...)
 	end
 
-	Schedule.On.After()
+	Calendar.After()
 end
 
 --[=[
@@ -319,7 +322,7 @@ end
 	Executes an individual job with the given arguments.
 ]=]
 function Sandwich.Fire.Job(Job : Job, ...: any) : true?
-	assert(Job.Stream, JobNotInStream)
+	assert(Job.Schedule, JobNotInSchedule)
 	return Job.Task(...)
 end
 
@@ -329,14 +332,14 @@ end
 	@param Job Job
 	@param ... any
 
-	Executes a job and all jobs in its stream after in order with the given arguments. If a job returns a non-nil value, the jobs will stop executing.
+	Executes a job and all jobs in its Schedule after in order with the given arguments. If a job returns a non-nil value, the jobs will stop executing.
 ]=]
 function Sandwich.Fire.Jobs(Job : Job, ...: any)
-	assert(Job.Stream, JobNotInStream)
-	local Stream = Job.Stream
+	assert(Job.Schedule, JobNotInSchedule)
+	local Schedule = Job.Schedule
 
-	for i = table.find(Stream.Jobs, Job) :: number, #Stream.Jobs do
-		if Stream.Jobs[i].Task(...) == true then break end
+	for i = table.find(Schedule.Jobs, Job) :: number, #Schedule.Jobs do
+		if Schedule.Jobs[i].Task(...) == true then break end
 	end
 end
 
