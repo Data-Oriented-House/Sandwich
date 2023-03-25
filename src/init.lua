@@ -83,7 +83,7 @@ Sandwich.Create = {}
 	@param Callbacks { Before : (() -> true?)?, After : (() -> ())? }?
 	@return Schedule
 
-	Creates a new Schedule with jobs for each task in order.
+	From a list of tasks this creates a new Schedule by creating a new job for each task and adding it to the Schedule. The Schedule will store the jobs in the order they are given.
 ]=]
 function Sandwich.Create.Schedule(Tasks : { Task }?, Callbacks : Callbacks?) : Schedule
 	local Tasks = (Tasks or {}) :: { Task }
@@ -112,7 +112,7 @@ end
 	@param Callbacks { Before : (() -> true?)?, After : (() -> ())? }?
 	@return Calendar
 
-	Creates a new Calendar with Schedules in order.
+	This creates a new calendar from the given list of schedules. The calendar will store the schedules in the order they are given.
 ]=]
 function Sandwich.Create.Calendar(Schedules : { Schedule }, Callbacks : Callbacks?) : Calendar
 	local Callbacks = (Callbacks or {}) :: Callbacks
@@ -129,7 +129,7 @@ end
 	@function Clear
 	@param Schedule Schedule
 
-	Removes all jobs from a Schedule.
+	Removes all jobs from the given schedule.
 ]=]
 function Sandwich.Clear(Schedule : Schedule)
 	for _, Job in Schedule.Jobs do
@@ -144,8 +144,9 @@ end
 	@function Replace
 	@param Job Job
 	@param Task Task
+	@error "Job is not in a Schedule" -- The job was removed from its schedule before this call.
 
-	Replaces the task of a job.
+	Replaces the task of the given job with the given task.
 ]=]
 function Sandwich.Replace(Job : Job, Task : Task)
 	assert(Job.Schedule, JobNotInSchedule)
@@ -161,7 +162,7 @@ end
 	@param Task Task
 	@return Job?
 
-	Finds the first job with the given task in a Schedule.
+	Finds the first job with the given task in the given schedule.
 ]=]
 function Sandwich.Find(Schedule : Schedule, Task : Task) : Job?
 	for _, Job in Schedule.Jobs do
@@ -180,7 +181,7 @@ Sandwich.Insert = {}
 	@param Task Task
 	@return Job
 
-	Inserts a new job at the start of a Schedule.
+	This inserts a new job with the given task at the start of the given schedule.
 ]=]
 function Sandwich.Insert.Start(Schedule : Schedule, Task : Task) : Job
 	local Job : Job = {
@@ -200,7 +201,7 @@ end
 	@param Task Task
 	@return Job
 
-	Inserts a new job at the end of a Schedule.
+	This inserts a new job with the given task at the end of the given schedule.
 ]=]
 function Sandwich.Insert.End(Schedule : Schedule, Task : Task) : Job
 	local Job : Job = {
@@ -219,8 +220,9 @@ end
 	@param Job Job
 	@param Task Task
 	@return Job
+	@error "Job is not in a Schedule" -- The job was removed from its schedule before this call.
 
-	Inserts a new job before a pre-existing job.
+	This inserts a new job with the given task before the given job.
 ]=]
 function Sandwich.Insert.Before(Job : Job, Task : Task) : Job
 	assert(Job.Schedule, JobNotInSchedule)
@@ -242,8 +244,9 @@ end
 	@param Job Job
 	@param Task Task
 	@return Job
+	@error "Job is not in a Schedule" -- The job was removed from its schedule before this call.
 
-	Inserts a new job after a pre-existing job.
+	This inserts a new job with the given task after the given job.
 ]=]
 function Sandwich.Insert.After(Job : Job, Task : Task) : Job
 	assert(Job.Schedule, JobNotInSchedule)
@@ -263,8 +266,9 @@ end
 	@within Sandwich
 	@function Remove
 	@param Job Job
+	@error "Job is not in a Schedule" -- The job was removed from its schedule before this call.
 
-	Removes a job from its Schedule and sets its Schedule to nil.
+	This removes the given job from its schedule.
 ]=]
 function Sandwich.Remove(Job : Job)
 	assert(Job.Schedule, JobNotInSchedule)
@@ -318,6 +322,7 @@ end
 	@param Job Job
 	@param ... any
 	@return true?
+	@error "Job is not in a Schedule" -- The job was removed from its schedule before this call.
 
 	Executes an individual job with the given arguments.
 ]=]
@@ -331,6 +336,7 @@ end
 	@function Fire.Jobs
 	@param Job Job
 	@param ... any
+	@error "Job is not in a Schedule" -- The job was removed from its schedule before this call.
 
 	Executes a job and all jobs in its Schedule after in order with the given arguments. If a job returns a non-nil value, the jobs will stop executing.
 ]=]
