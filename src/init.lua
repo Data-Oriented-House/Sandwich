@@ -68,7 +68,6 @@ type Callbacks = {
 	After : (() -> ())?,
 }
 
-
 local JobNotInSchedule = "Job is not in a Schedule"
 local function Nop() end
 
@@ -353,15 +352,16 @@ end
 	@within Sandwich
 	@function Interval
 	@param Seconds number
-	@param Callback () -> true?
+	@param Callback (...any) -> true?
+	@param ... any
 	@return thread
 
 	Creates a new thread that will execute a callback every given number of seconds. If the callback returns a non-nil value, the thread will stop executing.
 ]=]
-function Sandwich.Interval(Seconds : number, Callback : () -> true?) : thread
-	return task.spawn(function()
+function Sandwich.Interval(Seconds : number, Callback : (...any) -> true?, ... : any) : thread
+	return task.spawn(function(... : any)
 		repeat task.wait(Seconds) until Callback()
-	end)
+	end, ...)
 end
 
 return Sandwich
