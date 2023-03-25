@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="generator" content="Docusaurus v2.0.1">
 <title data-rh="true">Sandwich | Sandwich</title><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://solorscuffle-bot.github.io/Sandwich/api/Sandwich"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Sandwich | Sandwich"><meta data-rh="true" name="description" content="The simple Calendarr for Roblox."><meta data-rh="true" property="og:description" content="The simple Calendarr for Roblox."><link data-rh="true" rel="icon" href="/Sandwich/favicon.ico"><link data-rh="true" rel="canonical" href="https://solorscuffle-bot.github.io/Sandwich/api/Sandwich"><link data-rh="true" rel="alternate" href="https://solorscuffle-bot.github.io/Sandwich/api/Sandwich" hreflang="en"><link data-rh="true" rel="alternate" href="https://solorscuffle-bot.github.io/Sandwich/api/Sandwich" hreflang="x-default"><link rel="stylesheet" href="/Sandwich/assets/css/styles.77d02042.css">
-<link rel="preload" href="/Sandwich/assets/js/runtime~main.fdf2cf18.js" as="script">
-<link rel="preload" href="/Sandwich/assets/js/main.ee49913d.js" as="script">
+<link rel="preload" href="/Sandwich/assets/js/runtime~main.7ab38659.js" as="script">
+<link rel="preload" href="/Sandwich/assets/js/main.46af784e.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -20,41 +20,41 @@
 <p>An ordered list of jobs. Before and after are called before and after the Schedule is executed. If Before returns true, the Schedule will not be executed.</p>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Calendar"><code style="text-decoration:none">Calendar</code><a class="hash-link" href="#Calendar" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L60"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code class="purple_ieR2">interface</code> <code>Calendar<!-- --> <!-- -->{</code><div class="inset_uKQm"><div><code>Schedules<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code class="purple_ieR2">}</code></div><div><code>Before<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">true?</code></div><div><code>After<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code></div></div><code>}</code></div><div>
 <p>An ordered list of Schedules. Before and after are called before and after the Calendar is executed. If Before returns true, the Calendar will not be executed.</p>
-</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Create.Schedule"><code style="text-decoration:none">Create.Schedule</code><a class="hash-link" href="#Create.Schedule" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L88"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Create.Schedule</code><code>(</code><div class="inset_uKQm"><div><code>Tasks<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code><code class="purple_ieR2">}</code><code>,</code></div><div><code>Callbacks<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code class="blue_P4bS">Before</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="blue_P4bS">true?</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">After</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code></div><div>
-<p>Creates a new Schedule with jobs for each task in order.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Create.Calendar"><code style="text-decoration:none">Create.Calendar</code><a class="hash-link" href="#Create.Calendar" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L117"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Create.Calendar</code><code>(</code><div class="inset_uKQm"><div><code>Schedules<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code class="purple_ieR2">}</code><code>,</code></div><div><code>Callbacks<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code class="blue_P4bS">Before</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="blue_P4bS">true?</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">After</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Calendar">Calendar</a></code></div><div>
-<p>Creates a new Calendar with Schedules in order.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Clear"><code style="text-decoration:none">Clear</code><a class="hash-link" href="#Clear" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L134"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Clear</code><code>(</code><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>) → </code><code>(</code><code>)</code></div><div>
-<p>Removes all jobs from a Schedule.</p>
+</div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a class="hash-link" href="#functions" title="Direct link to heading">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Create.Schedule"><code style="text-decoration:none">Create.Schedule</code><a class="hash-link" href="#Create.Schedule" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L87"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Create.Schedule</code><code>(</code><div class="inset_uKQm"><div><code>Tasks<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code><code class="purple_ieR2">}</code><code>,</code></div><div><code>Callbacks<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code class="blue_P4bS">Before</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="blue_P4bS">true?</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">After</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code></div><div>
+<p>From a list of tasks this creates a new Schedule by creating a new job for each task and adding it to the Schedule. The Schedule will store the jobs in the order they are given.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Create.Calendar"><code style="text-decoration:none">Create.Calendar</code><a class="hash-link" href="#Create.Calendar" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L116"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Create.Calendar</code><code>(</code><div class="inset_uKQm"><div><code>Schedules<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code class="purple_ieR2">}</code><code>,</code></div><div><code>Callbacks<!-- -->: </code><code class="purple_ieR2">{</code><div class="inset_uKQm"><code class="blue_P4bS">Before</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="blue_P4bS">true?</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code><code class="purple_ieR2">,</code></div><div class="inset_uKQm"><code class="blue_P4bS">After</code><code>: </code><code class="green_DgR4">(</code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="yellow_QJap"> → </code><code class="yellow_QJap">(</code><code class="yellow_QJap">)</code><code class="green_DgR4">)</code><code class="blue_P4bS">?</code></div><code class="purple_ieR2">}</code><code class="blue_P4bS">?</code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Calendar">Calendar</a></code></div><div>
+<p>This creates a new calendar from the given list of schedules. The calendar will store the schedules in the order they are given.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Clear"><code style="text-decoration:none">Clear</code><a class="hash-link" href="#Clear" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L133"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Clear</code><code>(</code><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>Removes all jobs from the given schedule.</p>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Replace"><code style="text-decoration:none">Replace</code><a class="hash-link" href="#Replace" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L150"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Replace</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
-<p>Replaces the task of a job.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Find"><code style="text-decoration:none">Find</code><a class="hash-link" href="#Find" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L166"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Find</code><code>(</code><div class="inset_uKQm"><div><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job?</a></code></div><div>
-<p>Finds the first job with the given task in a Schedule.</p>
+<p>Replaces the task of the given job with the given task.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Job is not in a Schedule&quot;</td><td>The job was removed from its schedule before this call.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Find"><code style="text-decoration:none">Find</code><a class="hash-link" href="#Find" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L166"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Find</code><code>(</code><div class="inset_uKQm"><div><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job?</a></code></div><div>
+<p>Finds the first job with the given task in the given schedule.</p>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Insert.Start"><code style="text-decoration:none">Insert.Start</code><a class="hash-link" href="#Insert.Start" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L185"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Insert.Start</code><code>(</code><div class="inset_uKQm"><div><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code></div><div>
-<p>Inserts a new job at the start of a Schedule.</p>
+<p>This inserts a new job with the given task at the start of the given schedule.</p>
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Insert.End"><code style="text-decoration:none">Insert.End</code><a class="hash-link" href="#Insert.End" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L205"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Insert.End</code><code>(</code><div class="inset_uKQm"><div><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code></div><div>
-<p>Inserts a new job at the end of a Schedule.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Insert.Before"><code style="text-decoration:none">Insert.Before</code><a class="hash-link" href="#Insert.Before" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L225"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Insert.Before</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code></div><div>
-<p>Inserts a new job before a pre-existing job.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Insert.After"><code style="text-decoration:none">Insert.After</code><a class="hash-link" href="#Insert.After" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L248"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Insert.After</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code></div><div>
-<p>Inserts a new job after a pre-existing job.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Remove"><code style="text-decoration:none">Remove</code><a class="hash-link" href="#Remove" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L269"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Remove</code><code>(</code><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>) → </code><code>(</code><code>)</code></div><div>
-<p>Removes a job from its Schedule and sets its Schedule to nil.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Schedule"><code style="text-decoration:none">Fire.Schedule</code><a class="hash-link" href="#Fire.Schedule" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L287"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Schedule</code><code>(</code><div class="inset_uKQm"><div><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
+<p>This inserts a new job with the given task at the end of the given schedule.</p>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Insert.Before"><code style="text-decoration:none">Insert.Before</code><a class="hash-link" href="#Insert.Before" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L226"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Insert.Before</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code></div><div>
+<p>This inserts a new job with the given task before the given job.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Job is not in a Schedule&quot;</td><td>The job was removed from its schedule before this call.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Insert.After"><code style="text-decoration:none">Insert.After</code><a class="hash-link" href="#Insert.After" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L250"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Insert.After</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>Task<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Task">Task</a></code></div></div><code>) → </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code></div><div>
+<p>This inserts a new job with the given task after the given job.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Job is not in a Schedule&quot;</td><td>The job was removed from its schedule before this call.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Remove"><code style="text-decoration:none">Remove</code><a class="hash-link" href="#Remove" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L272"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Remove</code><code>(</code><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>) → </code><code>(</code><code>)</code></div><div>
+<p>This removes the given job from its schedule.</p>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Job is not in a Schedule&quot;</td><td>The job was removed from its schedule before this call.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Schedule"><code style="text-decoration:none">Fire.Schedule</code><a class="hash-link" href="#Fire.Schedule" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L290"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Schedule</code><code>(</code><div class="inset_uKQm"><div><code>Schedule<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Executes all jobs in a Schedule in order with the given arguments. If a job returns a non-nil value, the Schedule will stop executing.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Schedules"><code style="text-decoration:none">Fire.Schedules</code><a class="hash-link" href="#Fire.Schedules" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L305"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Schedules</code><code>(</code><div class="inset_uKQm"><div><code>Schedules<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code class="purple_ieR2">}</code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Schedules"><code style="text-decoration:none">Fire.Schedules</code><a class="hash-link" href="#Fire.Schedules" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L308"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Schedules</code><code>(</code><div class="inset_uKQm"><div><code>Schedules<!-- -->: </code><code class="purple_ieR2">{</code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Schedule">Schedule</a></code><code class="purple_ieR2">}</code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Executes all jobs in all Schedules in order with the given arguments. If a job returns a non-nil value, the Schedule will stop executing and it will move to the next Schedule.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Job"><code style="text-decoration:none">Fire.Job</code><a class="hash-link" href="#Fire.Job" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L324"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Job</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="blue_P4bS">true?</code></div><div>
+</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Job"><code style="text-decoration:none">Fire.Job</code><a class="hash-link" href="#Fire.Job" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L328"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Job</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="blue_P4bS">true?</code></div><div>
 <p>Executes an individual job with the given arguments.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Jobs"><code style="text-decoration:none">Fire.Jobs</code><a class="hash-link" href="#Fire.Jobs" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L337"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Jobs</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Job is not in a Schedule&quot;</td><td>The job was removed from its schedule before this call.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Fire.Jobs"><code style="text-decoration:none">Fire.Jobs</code><a class="hash-link" href="#Fire.Jobs" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L342"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Fire.Jobs</code><code>(</code><div class="inset_uKQm"><div><code>Job<!-- -->: </code><code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="/Sandwich/api/Sandwich#Job">Job</a></code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code>(</code><code>)</code></div><div>
 <p>Executes a job and all jobs in its Schedule after in order with the given arguments. If a job returns a non-nil value, the jobs will stop executing.</p>
-</div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Interval"><code style="text-decoration:none">Interval</code><a class="hash-link" href="#Interval" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L355"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Interval</code><code>(</code><div class="inset_uKQm"><div><code>Seconds<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code></div><div><code>Callback<!-- -->: </code><code class="purple_ieR2">(</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">true?</code></div></div><code>) → </code><code class="blue_P4bS">thread</code></div><div>
+</div><h3>Errors</h3><table class="errorTable_jfN8"><thead><tr><th>Type</th><th>Description</th></tr></thead><tbody><tr><td>&quot;Job is not in a Schedule&quot;</td><td>The job was removed from its schedule before this call.</td></tr></tbody></table><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="Interval"><code style="text-decoration:none">Interval</code><a class="hash-link" href="#Interval" title="Direct link to heading">​</a></h3><div class="repositoryDetailsContainer_BPdw"><a class="sourceButton_sEho" href="https://github.com/solarscuffle-bot/sandwich/blob/main/src/init.lua#L361"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Sandwich<!-- -->.</code><code class="green_DgR4">Interval</code><code>(</code><div class="inset_uKQm"><div><code>Seconds<!-- -->: </code><code class="blue_P4bS">number</code><code>,</code></div><div><code>Callback<!-- -->: </code><code class="purple_ieR2">(</code><code class="blue_P4bS">...any</code><code class="purple_ieR2">)</code><code class="purple_ieR2"> → </code><code class="blue_P4bS">true?</code><code>,</code></div><div><code>...<!-- -->: </code><code class="blue_P4bS">any</code></div></div><code>) → </code><code class="blue_P4bS">thread</code></div><div>
 <p>Creates a new thread that will execute a callback every given number of seconds. If the callback returns a non-nil value, the thread will stop executing.</p>
 </div></div></article></div><details><summary>Show raw api</summary><pre style="max-width:100%;white-space:pre-wrap">{
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;Create.Schedule&quot;,
-            &quot;desc&quot;: &quot;Creates a new Schedule with jobs for each task in order.&quot;,
+            &quot;desc&quot;: &quot;From a list of tasks this creates a new Schedule by creating a new job for each task and adding it to the Schedule. The Schedule will store the jobs in the order they are given.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Tasks&quot;,
@@ -75,13 +75,13 @@
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 88,
+                &quot;line&quot;: 87,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Create.Calendar&quot;,
-            &quot;desc&quot;: &quot;Creates a new Calendar with Schedules in order.&quot;,
+            &quot;desc&quot;: &quot;This creates a new calendar from the given list of schedules. The calendar will store the schedules in the order they are given.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Schedules&quot;,
@@ -102,13 +102,13 @@
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 117,
+                &quot;line&quot;: 116,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Clear&quot;,
-            &quot;desc&quot;: &quot;Removes all jobs from a Schedule.&quot;,
+            &quot;desc&quot;: &quot;Removes all jobs from the given schedule.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Schedule&quot;,
@@ -119,13 +119,13 @@
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 134,
+                &quot;line&quot;: 133,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Replace&quot;,
-            &quot;desc&quot;: &quot;Replaces the task of a job.&quot;,
+            &quot;desc&quot;: &quot;Replaces the task of the given job with the given task.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Job&quot;,
@@ -140,6 +140,12 @@
             ],
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Job is not in a Schedule\&quot;&quot;,
+                    &quot;desc&quot;: &quot;The job was removed from its schedule before this call.&quot;
+                }
+            ],
             &quot;source&quot;: {
                 &quot;line&quot;: 150,
                 &quot;path&quot;: &quot;src/init.lua&quot;
@@ -147,7 +153,7 @@
         },
         {
             &quot;name&quot;: &quot;Find&quot;,
-            &quot;desc&quot;: &quot;Finds the first job with the given task in a Schedule.&quot;,
+            &quot;desc&quot;: &quot;Finds the first job with the given task in the given schedule.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Schedule&quot;,
@@ -174,7 +180,7 @@
         },
         {
             &quot;name&quot;: &quot;Insert.Start&quot;,
-            &quot;desc&quot;: &quot;Inserts a new job at the start of a Schedule.&quot;,
+            &quot;desc&quot;: &quot;This inserts a new job with the given task at the start of the given schedule.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Schedule&quot;,
@@ -201,7 +207,7 @@
         },
         {
             &quot;name&quot;: &quot;Insert.End&quot;,
-            &quot;desc&quot;: &quot;Inserts a new job at the end of a Schedule.&quot;,
+            &quot;desc&quot;: &quot;This inserts a new job with the given task at the end of the given schedule.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Schedule&quot;,
@@ -228,7 +234,7 @@
         },
         {
             &quot;name&quot;: &quot;Insert.Before&quot;,
-            &quot;desc&quot;: &quot;Inserts a new job before a pre-existing job.&quot;,
+            &quot;desc&quot;: &quot;This inserts a new job with the given task before the given job.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Job&quot;,
@@ -248,14 +254,20 @@
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Job is not in a Schedule\&quot;&quot;,
+                    &quot;desc&quot;: &quot;The job was removed from its schedule before this call.&quot;
+                }
+            ],
             &quot;source&quot;: {
-                &quot;line&quot;: 225,
+                &quot;line&quot;: 226,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Insert.After&quot;,
-            &quot;desc&quot;: &quot;Inserts a new job after a pre-existing job.&quot;,
+            &quot;desc&quot;: &quot;This inserts a new job with the given task after the given job.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Job&quot;,
@@ -275,14 +287,20 @@
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Job is not in a Schedule\&quot;&quot;,
+                    &quot;desc&quot;: &quot;The job was removed from its schedule before this call.&quot;
+                }
+            ],
             &quot;source&quot;: {
-                &quot;line&quot;: 248,
+                &quot;line&quot;: 250,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
         {
             &quot;name&quot;: &quot;Remove&quot;,
-            &quot;desc&quot;: &quot;Removes a job from its Schedule and sets its Schedule to nil.&quot;,
+            &quot;desc&quot;: &quot;This removes the given job from its schedule.&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;Job&quot;,
@@ -292,8 +310,14 @@
             ],
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Job is not in a Schedule\&quot;&quot;,
+                    &quot;desc&quot;: &quot;The job was removed from its schedule before this call.&quot;
+                }
+            ],
             &quot;source&quot;: {
-                &quot;line&quot;: 269,
+                &quot;line&quot;: 272,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -315,7 +339,7 @@
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 287,
+                &quot;line&quot;: 290,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -337,7 +361,7 @@
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 305,
+                &quot;line&quot;: 308,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -363,8 +387,14 @@
                 }
             ],
             &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Job is not in a Schedule\&quot;&quot;,
+                    &quot;desc&quot;: &quot;The job was removed from its schedule before this call.&quot;
+                }
+            ],
             &quot;source&quot;: {
-                &quot;line&quot;: 324,
+                &quot;line&quot;: 328,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -385,8 +415,14 @@
             ],
             &quot;returns&quot;: [],
             &quot;function_type&quot;: &quot;static&quot;,
+            &quot;errors&quot;: [
+                {
+                    &quot;lua_type&quot;: &quot;\&quot;Job is not in a Schedule\&quot;&quot;,
+                    &quot;desc&quot;: &quot;The job was removed from its schedule before this call.&quot;
+                }
+            ],
             &quot;source&quot;: {
-                &quot;line&quot;: 337,
+                &quot;line&quot;: 342,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         },
@@ -402,7 +438,12 @@
                 {
                     &quot;name&quot;: &quot;Callback&quot;,
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;() -&gt; true?&quot;
+                    &quot;lua_type&quot;: &quot;(...any) -&gt; true?&quot;
+                },
+                {
+                    &quot;name&quot;: &quot;...&quot;,
+                    &quot;desc&quot;: &quot;&quot;,
+                    &quot;lua_type&quot;: &quot;any&quot;
                 }
             ],
             &quot;returns&quot;: [
@@ -413,7 +454,7 @@
             ],
             &quot;function_type&quot;: &quot;static&quot;,
             &quot;source&quot;: {
-                &quot;line&quot;: 355,
+                &quot;line&quot;: 361,
                 &quot;path&quot;: &quot;src/init.lua&quot;
             }
         }
@@ -507,7 +548,7 @@
         &quot;path&quot;: &quot;src/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#Calendar" class="table-of-contents__link toc-highlight">Calendar</a></li><li><a href="#Job" class="table-of-contents__link toc-highlight">Job</a></li><li><a href="#Schedule" class="table-of-contents__link toc-highlight">Schedule</a></li><li><a href="#Task" class="table-of-contents__link toc-highlight">Task</a></li></ul></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Clear" class="table-of-contents__link toc-highlight">.Clear</a></li><li><a href="#Create.Calendar" class="table-of-contents__link toc-highlight">.Create.Calendar</a></li><li><a href="#Create.Schedule" class="table-of-contents__link toc-highlight">.Create.Schedule</a></li><li><a href="#Find" class="table-of-contents__link toc-highlight">.Find</a></li><li><a href="#Fire.Job" class="table-of-contents__link toc-highlight">.Fire.Job</a></li><li><a href="#Fire.Jobs" class="table-of-contents__link toc-highlight">.Fire.Jobs</a></li><li><a href="#Fire.Schedule" class="table-of-contents__link toc-highlight">.Fire.Schedule</a></li><li><a href="#Fire.Schedules" class="table-of-contents__link toc-highlight">.Fire.Schedules</a></li><li><a href="#Insert.After" class="table-of-contents__link toc-highlight">.Insert.After</a></li><li><a href="#Insert.Before" class="table-of-contents__link toc-highlight">.Insert.Before</a></li><li><a href="#Insert.End" class="table-of-contents__link toc-highlight">.Insert.End</a></li><li><a href="#Insert.Start" class="table-of-contents__link toc-highlight">.Insert.Start</a></li><li><a href="#Interval" class="table-of-contents__link toc-highlight">.Interval</a></li><li><a href="#Remove" class="table-of-contents__link toc-highlight">.Remove</a></li><li><a href="#Replace" class="table-of-contents__link toc-highlight">.Replace</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2023 SolarScuffle-Bot. Built with Moonwave and Docusaurus</div></div></div></footer></div>
-<script src="/Sandwich/assets/js/runtime~main.fdf2cf18.js"></script>
-<script src="/Sandwich/assets/js/main.ee49913d.js"></script>
+<script src="/Sandwich/assets/js/runtime~main.7ab38659.js"></script>
+<script src="/Sandwich/assets/js/main.46af784e.js"></script>
 </body>
 </html>
