@@ -31,7 +31,7 @@ favicon = "/favicon.ico"
 # From git:
 organizationName = "SolarScuffle-Bot"
 projectName = "Sandwich"
-url = "https://solorscuffle-bot.github.io"
+url = "https://solarscuffle-bot.github.io"
 baseUrl = "/Sandwich/"
 tagline = "Roblox's lightweight scheduler"
 
