@@ -1,5 +1,5 @@
 title = "Sandwich"  # From Git
-gitRepoUrl = "https://github.com/solarscuffle-bot/sandwich" # From Git
+gitRepoUrl = "https://github.com/data-oriented-house/sandwich" # From Git
 
 gitSourceBranch = "main"
 changelog = true
@@ -31,7 +31,7 @@ favicon = "/favicon.ico"
 # From git:
 organizationName = "SolarScuffle-Bot"
 projectName = "Sandwich"
-url = "https://solarscuffle-bot.github.io"
+url = "https://data-oriented-house.github.io"
 baseUrl = "/Sandwich/"
 tagline = "Roblox's lightweight scheduler"
 

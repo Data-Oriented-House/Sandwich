@@ -9,7 +9,7 @@
 --[=[
 	@class Sandwich
 
-	The simple Calendarr for Roblox.
+	The simple task scheduler for Roblox.
 ]=]
 
 --[=[
