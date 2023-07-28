@@ -79,7 +79,7 @@ function Sandwich.new(parameters: {
 				local nextJobs = schedule.graph[dependency]
 				assert(
 					nextJobs,
-					'Job does not exist, you are passing in a job that was not created by this schedule, or you are not passing in a job at all.'
+					'A dependency does not exist! You are passing in a job that was not created by this schedule, or you are not passing in a job at all.'
 				)
 				table.insert(nextJobs, jobTask)
 			end
@@ -143,9 +143,9 @@ end
 
 --[=[
 	@within Schedule
-	@type Job (...any) -> ()
+	@type Job userdata
 ]=]
-export type Job = (...any) -> ()
+export type Job = typeof(newproxy())
 
 --[=[
 	@within Schedule
