@@ -10,17 +10,17 @@ includeReadme = false
 
 [[home.features]]
 title = "Extensible and Composable"
-description = "Because all logic is separated from data, and data is split up into Tasks, Jobs, and Streams, your jobs and streams are extensible and composable right from the start!"
+description = "Because all logic is separated from data, your jobs are extensible and composable right from the start! This enables elegant solutions to complex problems often introduced in ECS or loading patterns!"
 # image = "/PuzzlePieces.png"
 
 [[home.features]]
-title = "Task Scheduling"
-description = "Sandwich allows you to easily define, order, and execute tasks in your experiences."
+title = "Job Scheduling"
+description = "Sandwich allows you to easily order jobs in your experiences via dependencies and perform logic on intervals."
 image = "/SandwichLogo.png"
 
 [[home.features]]
-title = "Lightweight and Efficient"
-description = "Sandwich is a lightweight scheduler designed to minimize overhead and maximize efficiency, making it an ideal solution for managing jobs in your Roblox projects. It leverages the power of arrays and optimized data definitions to achieve this."
+title = "Lightweight and Effective"
+description = "The code is simple, short, and effective. Your project won't be bogged down by a large library; Sandwich is just over 100 lines!"
 # image = "/Lightweight.png"
 
 [docusaurus]
@@ -29,7 +29,7 @@ onBrokenMarkdownLinks = "warn"
 favicon = "/favicon.ico"
 
 # From git:
-organizationName = "SolarScuffle-Bot"
+organizationName = "Data-Oriented-House"
 projectName = "Sandwich"
 url = "https://data-oriented-house.github.io"
 baseUrl = "/Sandwich/"
