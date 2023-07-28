@@ -150,7 +150,7 @@ export type Job = typeof(newproxy())
 --[=[
 	@within Schedule
 	@interface Schedule
-	.new (jobTask: Job, ...: Job) -> Job
+	.new (jobTask: (...: any) -> (), ...: Job) -> Job
 	.start (...: any) -> ()
 	.before (job: Job, ...: any) -> ()?
 	.after (job: Job, ...: any) -> ()?
