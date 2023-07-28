@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[754],{63891:s=>{s.exports=JSON.parse('{"sourceUrl":"https://github.com/data-oriented-house/sandwich/blob/main","baseUrl":"/Sandwich/","classOrder":[],"apiCategories":[]}')}}]);
