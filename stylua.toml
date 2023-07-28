@@ -1,4 +1,4 @@
-vquote_style = "ForceSingle"
+quote_style = "ForceSingle"
 call_parentheses = "None"
 
 [sort_requires]
