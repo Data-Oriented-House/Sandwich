@@ -38,7 +38,7 @@ local Sandwich = {}
 
 	Creates a new schedule that can be used to create jobs. Optionally takes in a `before` and `after` callback that will be called before and after each job is executed.
 ]=]
-function Sandwich.new(parameters: {
+function Sandwich.schedule(parameters: {
 	before: (Job, ...any) -> ()?,
 	after: (Job, ...any) -> ()?,
 }?)
@@ -70,8 +70,8 @@ function Sandwich.new(parameters: {
 		local f = schedule.new(function(...) print("f", ...) end, a, e, b, c)
 		```
 	]=]
-	function schedule.new(jobTask: (...any) -> (), ...: Job)
-		local job = newproxy()
+	function schedule.job(jobTask: (...any) -> (), ...: Job)
+		local job = jobTask
 		schedule.graph[job] = {}
 
 		local dependencies = { ... }
@@ -142,11 +142,6 @@ function Sandwich.interval<T...>(seconds: number, callback: (T...) -> boolean?, 
 	end, ...)
 end
 
---[=[
-	@within Schedule
-	@type Job userdata
-]=]
-export type Job = typeof(newproxy())
 
 --[=[
 	@within Schedule
@@ -158,6 +153,12 @@ export type Job = typeof(newproxy())
 	.graph { [Job]: { Job } }
 	.jobs { Job }
 ]=]
-export type Schedule = typeof(Sandwich.new())
+export type Schedule = typeof(Sandwich.schedule(...))
+
+--[=[
+	@within Schedule
+	@type Job (...: any) -> ()
+]=]
+export type Job = typeof(Sandwich.schedule(...).job(...))
 
 return Sandwich
