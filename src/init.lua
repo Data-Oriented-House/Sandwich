@@ -85,11 +85,12 @@ function Sandwich.new(parameters: {
 			end
 		end
 
-		schedule.graph[jobTask] = {}
+		local job = newproxy()
+		schedule.graph[job] = {}
 
 		topologicalSort(schedule)
 
-		return newproxy()
+		return job
 	end
 
 	--[=[
