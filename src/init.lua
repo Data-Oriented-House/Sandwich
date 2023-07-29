@@ -71,9 +71,12 @@ function Sandwich.new(parameters: {
 		```
 	]=]
 	function schedule.new(jobTask: (...any) -> (), ...: Job)
+		local job = newproxy()
+		schedule.graph[job] = {}
+
 		local dependencies = { ... }
 		if #dependencies == 0 then
-			table.insert(schedule.graph[root], jobTask)
+			table.insert(schedule.graph[root], job)
 		else
 			for _, dependency in dependencies do
 				local nextJobs = schedule.graph[dependency]
@@ -81,12 +84,9 @@ function Sandwich.new(parameters: {
 					nextJobs,
 					'A dependency does not exist! You are passing in a job that was not created by this schedule, or you are not passing in a job at all.'
 				)
-				table.insert(nextJobs, jobTask)
+				table.insert(nextJobs, job)
 			end
 		end
-
-		local job = newproxy()
-		schedule.graph[job] = {}
 
 		topologicalSort(schedule)
 
