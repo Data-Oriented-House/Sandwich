@@ -3,7 +3,7 @@
 ## Basic Example
 
 ```lua
-local schedule = Sandwich.new()
+local schedule = sandwich.schedule()
 
 function schedule.before(job: Job, ...)
     print("Before", job, ...)
@@ -13,27 +13,27 @@ function schedule.after(job: Job, ...)
     print("After", job, ...)
 end
 
-local a = schedule.new(function(...)
+local a = schedule.job(function(...)
     print("a", ...)
 end)
 
-local b = schedule.new(function(...)
+local b = schedule.job(function(...)
     print("b", ...)
 end)
 
-local c = schedule.new(function(...)
+local c = schedule.job(function(...)
     print("c", ...)
 end, a, b)
 
-local d = schedule.new(function(...)
+local d = schedule.job(function(...)
     print("d", ...)
 end, b, c)
 
-local e = schedule.new(function(...)
+local e = schedule.job(function(...)
     print("e", ...)
 end, c)
 
-local f = schedule.new(function(...)
+local f = schedule.job(function(...)
     print("f", ...)
 end, a, c, e)
 
@@ -47,7 +47,7 @@ Let's use a fake ECS for example, since these are always fun to schedule because
 ```lua
 local ECS = require(Some.Funny.ECS)
 
-local schedule = Sandwich.new {
+local schedule = sandwich.schedule {
 	before = function(job: Job, deltaTime: number)
 		print("Starting", job,  deltaTime)
 	end,
@@ -71,17 +71,17 @@ local function updatePositions(deltaTime: number, entities)
 	end
 end
 
-local accelerationSystem = schedule.new(function(deltaTime: number)
+local accelerationSystem = schedule.job(function(deltaTime: number)
 	print("Updating Acceleration", deltaTime)
 	updateAccelerations(deltaTime, ECS.query("target", "position", "acceleration"))
 end)
 
-local velocitySystem = schedule.new(function(deltaTime: number)
+local velocitySystem = schedule.job(function(deltaTime: number)
 	print("Updating Velocity", deltaTime)
 	updateVelocities(deltaTime, ECS.query("velocity", "acceleration"))
 end, accelerationSystem)
 
-local positionSystem = schedule.new(function(deltaTime: number)
+local positionSystem = schedule.job(function(deltaTime: number)
 	print("Updating Position", deltaTime)
 	updatePositions(deltaTime, ECS.query("position", "velocity"))
 end, velocitySystem)

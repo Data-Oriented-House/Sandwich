@@ -60,14 +60,14 @@ function Sandwich.schedule(parameters: {
 		Creates a new job that can be executed later by calling `Schedule.start`. Takes in other jobs as dependencies, which must be executed before this job is executed.
 
 		```lua
-		local schedule = Sandwich.new()
+		local schedule = Sandwich.schedule()
 
-		local a = schedule.new(function(...) print("a", ...) end)
-		local b = schedule.new(function(...) print("b", ...) end)
-		local c = schedule.new(function(...) print("c", ...) end, a)
-		local d = schedule.new(function(...) print("d", ...) end, a, b)
-		local e = schedule.new(function(...) print("e", ...) end, c, d)
-		local f = schedule.new(function(...) print("f", ...) end, a, e, b, c)
+		local a = schedule.job(function(...) print("a", ...) end)
+		local b = schedule.job(function(...) print("b", ...) end)
+		local c = schedule.job(function(...) print("c", ...) end, a)
+		local d = schedule.job(function(...) print("d", ...) end, a, b)
+		local e = schedule.job(function(...) print("e", ...) end, c, d)
+		local f = schedule.job(function(...) print("f", ...) end, a, e, b, c)
 		```
 	]=]
 	function schedule.job(jobTask: (...any) -> (), ...: Job)
@@ -146,7 +146,7 @@ end
 --[=[
 	@within Schedule
 	@interface Schedule
-	.new (jobTask: (...: any) -> (), ...: Job) -> Job
+	.job (jobTask: (...: any) -> (), ...: Job) -> Job
 	.start (...: any) -> ()
 	.before (job: Job, ...: any) -> ()?
 	.after (job: Job, ...: any) -> ()?
@@ -157,7 +157,7 @@ export type Schedule = typeof(Sandwich.schedule(...))
 
 --[=[
 	@within Schedule
-	@type Job (...: any) -> ()
+	@type Job (...any) -> ()
 ]=]
 export type Job = typeof(Sandwich.schedule(...).job(...))
 
