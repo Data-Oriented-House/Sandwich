@@ -14,4 +14,44 @@ Sandwich simply lets you order jobs by specifying dependencies. Almost identical
 
 ## How Do I Use Sandwich?
 
-You create `Schedules` and then add `Jobs` to them. You can then start the schedule and all of the jobs will execute in topological order. Every time you want to run a schedule, you start it again. This makes it incredibly easy to integrate with pre-existing schedulers like Roblox's RunService, or work with event-driven systems like user-input.
+Very simple! You create Schedules and then add Jobs to them.
+
+```lua
+local newSchedule =  Sandwhich.schedule()
+
+-- Runs concurrently with secondJob
+local firstJob = newSchedule.job(function(text: string | number)
+    print("First " .. text)
+end)
+
+-- Runs concurrently with firstJob
+local secondJob = newSchedule.job(function(text: string | number)
+    print("Second " .. text)
+end)
+
+-- Always runs after firstJob
+local thirdJob = newSchedule.job(function(text: string | number)
+    print("Third " .. text)
+end, firstJob)
+```
+
+Then you can then start the schedule and all of the jobs will execute in topological order! Topological order in this case means dependencies will always be executed before the jobs that depend on them.
+
+```lua
+newSchedule.start("is running")
+-- First is running
+-- Second is running
+-- Third is running
+```
+
+Now every time you want to run a schedule, you call the start method. This makes it incredibly easy to integrate with pre-existing schedulers like Roblox's RunService, or work with event-driven systems like user-input.
+
+```lua
+RunService.Heartbeat:Connect(newSchedule.start)
+-- Second	0.016
+-- First	0.016
+-- Third	0.016
+
+local renderSchedule = Sandwhich.schedule()
+Runservice.RenderStepped:Connect(renderSchedule.start)
+```
