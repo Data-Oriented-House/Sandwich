@@ -17,7 +17,7 @@ Sandwich simply lets you order jobs by specifying dependencies. Almost identical
 Very simple! You create Schedules and then add Jobs to them.
 
 ```lua
-local newSchedule =  Sandwhich.schedule()
+local newSchedule =  Sandwich.schedule()
 
 -- Runs concurrently with secondJob
 local firstJob = newSchedule.job(function(text: string | number)
@@ -52,6 +52,6 @@ RunService.Heartbeat:Connect(newSchedule.start)
 -- First	0.016
 -- Third	0.016
 
-local renderSchedule = Sandwhich.schedule()
+local renderSchedule = Sandwich.schedule()
 Runservice.RenderStepped:Connect(renderSchedule.start)
 ```

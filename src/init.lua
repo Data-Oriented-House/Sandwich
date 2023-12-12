@@ -133,15 +133,52 @@ end
 	@return thread
 
 	Creates a new thread that will execute a callback every given number of seconds. If the callback returns a non-nil value, the thread will stop executing.
+
+	```lua
+	-- Run this every 300 seconds
+	local gameThread = Sandwich.interval(300, function()
+		print 'A special boss has appeared!'
+	end)
+	```
 ]=]
-function Sandwich.interval<T...>(seconds: number, callback: (T...) -> boolean?, ...: T...)
+function Sandwich.interval<T...>(period: number, callback: (T...) -> boolean?, ...: T...)
 	return task.spawn(function(...: T...)
 		repeat
-			task.wait(seconds)
+			task.wait(period)
 		until callback(...)
 	end, ...)
 end
 
+--[=[
+	@within Sandwich
+	@return Connection
+
+	Connects a callback to an event but will only fire the callback at the given frequency.
+
+	```lua
+	-- Run this 3 times a second on Heartbeat
+	Sandwich.tick(RunService.Heartbeat, 3, function(deltaTime)
+		local result = expensiveCalculation(deltaTime)
+		expensiveOperation(result)
+	end)
+	```
+]=]
+function Sandwich.tick<T...>(
+	event: { Connect: (any, (T...) -> ()) -> { Disconnect: (any) -> ()? } },
+	frequency: number,
+	callback: (T...) -> ()
+)
+	local period = 1 / frequency
+	local last = os.clock()
+	return event:Connect(function(...: T...)
+		local now = os.clock()
+		local delta = now - last
+		if delta > period then
+			callback(...)
+			last = now - delta % period
+		end
+	end)
+end
 
 --[=[
 	@within Schedule
