@@ -164,7 +164,7 @@ end
 	```
 ]=]
 function Sandwich.tick<T...>(
-	event: { Connect: (any, (T...) -> ()) -> { Disconnect: (any) -> ()? } },
+	event: RBXScriptSignal<T...> | { Connect: (any, (T...) -> ()) -> { Disconnect: (any) -> ()? } },
 	frequency: number,
 	callback: (T...) -> ()
 )
