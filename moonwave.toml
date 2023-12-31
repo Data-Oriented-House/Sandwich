@@ -8,6 +8,9 @@ changelog = true
 enabled = true
 includeReadme = false
 
+[navbar.logo]
+src = "favicon.ico"
+
 [[home.features]]
 title = "Extensible and Composable"
 description = "Because all logic is separated from data, your jobs are extensible and composable right from the start! This enables elegant solutions to complex problems often introduced in ECS or loading patterns!"
