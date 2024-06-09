@@ -1,8 +1,8 @@
 --!strict
 
-local function root() end
+local root: Job<...any> = function() end
 
-local function visit(schedule: Schedule, visited: { [Job]: true }, job: Job)
+local function visit<T...>(schedule: Schedule<T...>, visited: { [Job<T...>]: true }, job: Job<T...>)
 	if visited[job] then
 		return
 	end
@@ -18,7 +18,7 @@ local function visit(schedule: Schedule, visited: { [Job]: true }, job: Job)
 	end
 end
 
-local function topologicalSort(schedule: Schedule)
+local function topologicalSort<T...>(schedule: Schedule<T...>)
 	local visited = {}
 	table.clear(schedule.jobs)
 
@@ -38,18 +38,18 @@ local Sandwich = {}
 
 	Creates a new schedule that can be used to create jobs. Optionally takes in a `before` and `after` callback that will be called before and after each job is executed.
 ]=]
-function Sandwich.schedule(parameters: {
-	before: (Job, ...any) -> ()?,
-	after: (Job, ...any) -> ()?,
-}?)
+function Sandwich.schedule<T...>(parameters: {
+	before: (Job<T...>, T...) -> ()?,
+	after: (Job<T...>, T...) -> ()?,
+}?): Schedule<T...>
 	--[=[
 		@class Schedule
 
 		Schedules are used to create jobs that can be executed at a later time.
 	]=]
 	local schedule = {
-		graph = { [root] = {} } :: { [Job]: { Job } },
-		jobs = {} :: { Job },
+		graph = { [root] = {} },
+		jobs = {},
 		before = parameters and parameters.before,
 		after = parameters and parameters.after,
 	}
@@ -70,7 +70,7 @@ function Sandwich.schedule(parameters: {
 		local f = schedule.job(function(...) print("f", ...) end, a, e, b, c)
 		```
 	]=]
-	function schedule.job(jobTask: (...any) -> (), ...: Job)
+	function schedule.job(jobTask: Job<T...>, ...: Job<T...>): Job<T...>
 		local job = jobTask
 		schedule.graph[job] = {}
 
@@ -163,14 +163,20 @@ end
 	end)
 	```
 ]=]
-function Sandwich.tick<T...>(
-	event: RBXScriptSignal<T...> | { Connect: (any, (T...) -> ()) -> { Disconnect: (any) -> ()? } },
+function Sandwich.tick(
+	event: any,
 	frequency: number,
-	callback: (T...) -> ()
-)
+	callback: (...any) -> ()
+): any
+	assert(
+		typeof(event) == "RBXScriptSignal" or (typeof(event) == "table" and typeof(event.Connect) == "function"),
+		`argument 1 must be a signal, got {typeof(event)}: {event}`
+	)
+	assert(type(callback) == "function", `argument 3 must be a function, got {type(callback)}`)
+	
 	local period = 1 / frequency
 	local last = os.clock()
-	return event:Connect(function(...: T...)
+	return event:Connect(function(...)
 		local now = os.clock()
 		local delta = now - last
 		if delta > period then
@@ -182,20 +188,27 @@ end
 
 --[=[
 	@within Schedule
-	@interface Schedule
-	.job (jobTask: (...: any) -> (), ...: Job) -> Job
-	.start (...: any) -> ()
-	.before (job: Job, ...: any) -> ()?
-	.after (job: Job, ...: any) -> ()?
-	.graph { [Job]: { Job } }
-	.jobs { Job }
+	@interface Schedule<T...>
+	.job (jobTask: (T...) -> (), ...Job<T...>) -> Job<T...>
+	.start (T...) -> ()
+	.before (job: Job<T...>, T...) -> ()?
+	.after (job: Job<T...>, T...) -> ()?
+	.graph { [Job<T...>]: { Job<T...> } }
+	.jobs { Job<T...> }
 ]=]
-export type Schedule = typeof(Sandwich.schedule(...))
+export type Schedule<T...> = {
+	job: (jobTask: (T...) -> (), ...Job<T...>) -> Job<T...>,
+	start: (T...) -> (),
+	before: (job: Job<T...>, T...) -> ()?,
+	after: (job: Job<T...>, T...) -> ()?,
+	graph: { [Job<T...>]: { Job<T...> } },
+	jobs: { Job<T...> },
+}
 
 --[=[
 	@within Schedule
-	@type Job (...any) -> ()
+	@type Job<T...> (T...) -> ()
 ]=]
-export type Job = typeof(Sandwich.schedule(...).job(...))
+export type Job<T...> = (T...) -> ()
 
 return Sandwich
